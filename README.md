@@ -1,91 +1,46 @@
 # DataModelingWithPostgres-Sparkify
+ 
+### Table of Contents
 
-Table of Contents
+1. [Project Overview](#summary)
+2. [File Structure](#Files)
+3. [Data Schema](#schema)
+4. [Results of Optional Queriess](#results)
+5. [Acknowledgements](#licensing)
 
-Project Overview
-Problem Statement and Approach
-Installation
-Results
-Acknowledgements
-Project Overview
 
-This project is a capstone project of Udacity's Data Science Nano Degree Program. The provided dataset is a Starbucks simulated data of customer behavior on the Starbucks rewards mobile app. 
+    
+## Project Overview<a name="summary"></a>
 
-" Once every few days, Starbucks sends out an offer to users of the mobile app. An offer can be merely an advertisement for a drink or an actual offer such as a discount or BOGO (buy one get one free). Some users might not receive any offer during certain weeks, someone using the app might make a purchase through the app without having received an offer or seen an offer."
+This project is part of Data Engineering Nano degree, which mainly focuses on a 
 
-Problem Statement and Approach
+A startup called Sparkify wants to analyze the data they've been collecting on songs and user activity on their new music streaming app. The analytics team is particularly interested in understanding what songs users are listening to. Currently, they don't have an easy way to query their data, which resides in a directory of JSON logs on user activity on the app, as well as a directory with JSON metadata on the songs in their app.
 
-Generally the objective of the project is to combine transaction, demographic and offer data to determine which demographic groups respond best to which offer type. To tackle this exercise and find a solution to optimize Starbuck offers, I have decided to build three models to answer the following questions:
+They'd like a data engineer to create a Postgres database with tables designed to optimize queries on song play analysis, and bring you on the project. Your role is to create a database schema and ETL pipeline for this analysis. You'll be able to test your database and ETL pipeline by running queries given to you by the analytics team from Sparkify and compare your results with their expected results.
 
-Will the customer return and make purchases without the need to send an offer?
-Will the offer be successful to influence the user to complete?
-What type of offer to send to a particular individual?
-The followed approach to answer the above mentioned questions were, as follows:
+## File Structure<a name="Files"></a>
 
-Data understanding and exploration
-Data wrangling and preprocessing
-Data Analysis
-Data Modeling 
-Model evaluation using (Confusion Matrix, Accuracy, Recall, Precission and f1_score)
-Installation
+1. data folder: contains data files 
+2. sql_queries.py: scripts to drop / create tables and insert data to tables
+3. create_tables.py: creates the database and runs scripts in sql_queries.py to create tables
+4. etl.ipynb: scripts to extract data from the data folder, transform and load data to the created tables
+5. etl.py: runs scripts in etl.ipynb to extract, transforma and load data to our database
+6. test.ipynb: scripts to select data from db and test performance as well as data exploration scripts
 
-This project is developed using Python 3
+## Data Schema <a name="schema"></a>
 
-Libraries used:
+following is a diagram that dipicts fact and dimension tables to represent a star schema:
+![](sparkifySchema.png?raw=true)
+            
+    
+## Results of Optional Queries<a name="results"></a>
 
-pandas
+1. We find that a free user played 5 songs only and a paid user played 61 songs, does that infer that Sparkify introduces a limit on song plays for free users?
+2. SPARKIFY DB has 69 artists
+3. SPARKIFY has 71 songs in DB
+4. SPARKIFY has 96 users in DB although of a relatively low number of songs/artists
+5. Most of SPARKIFY users are free users, where 78 are FREE and only 18 are PAID
 
-numpy
 
-math
-
-json
-
-matplotlib.pyplot
-
-from sklearn.ensemble import RandomForestRegressor
-
-from sklearn.model_selection import train_test_split
-
-from sklearn.neighbors import KNeighborsClassifier
-
-from sklearn.preprocessing import StandardScaler
-
-from sklearn.pipeline import Pipeline
-
-from sklearn.metrics import confusion_matrix
-
-from sklearn.metrics import accuracy_score
-
-from sklearn.metrics import recall_score
-
-from sklearn.metrics import precision_score
-
-from sklearn.metrics import f1_score
-
-Results
-
-Most male Starbucks customer earn and average income of [30,000: 59,999], and most female customer earn high income [+90,000].
-Starbucks mainly targets average and above_average income customer with offers.
-Customers who earn above average income complete offers more than average income customers.
-Most Starbucks customers are adults with ages ranging from [35: 59].
-BOGO (buy one get one free) and discount offers are most popular across different age groups.
-Most members joined Starbucks in 2017, further research should be carried out to understand what drove this magnitude of new customers.
-1% of total informational offers are successful.
-12% of total discount offers are successful.
-13% of total bogo offers are successful.
-Female customers make more successful offer than males.
-Generally, adults make more successful offers.
-Total pure transactions not influinced by an offer are 18917 transactions.
-15% of total transactions are pure transactions not influenced by an offer.
-Total revenue generated from pure transactions is $261236.
-Mostly male adults earning an average level of income would make pure transactions, this segment of customers represent 6% of all adult male customers, and most of them are 58 years old.
-I would suggest two point if improvement:
-
-Trying several classification models, and choose the best one.
-while defining the pure transaction dataset, I could have added the logic to identify transactions that were made after the period of offer influence defined in the portfolio dataset.
-*Link to Medium Post: https://lama-alshegri.medium.com/starbucks-capstone-project-an-attempt-to-optimize-offers-f8054abd8ed1
-
-Acknowledgements
-
-Credits go to udacity and Starbucks for providing the opportunity to practice our skills!
+## Acknowledgements<a name="licensing"></a>
+Credits go to udacity for providing the opportunity to practice our skills!
