@@ -36,11 +36,11 @@ following is a diagram that dipicts fact and dimension tables to represent a sta
     
 ## Results of Optional Queries<a name="results"></a>
 
-1. We find that a free user played 5 songs only and a paid user played 61 songs, does that infer that Sparkify introduces a limit on song plays for free users?
+1. We find that a free user played far less songs than a paid user,does that infer that Sparkify introduces a limit on song plays for free users??
 2. SPARKIFY DB has 69 artists
 3. SPARKIFY has 71 songs in DB
 4. SPARKIFY has 96 users in DB although of a relatively low number of songs/artists
-5. Most of SPARKIFY users are free users, where 78 are FREE and only 18 are PAID
+5. Most of SPARKIFY users are free users, where 75 are FREE and only 21 are PAID
 
 ## Instructions to run the files<a name="inst"></a>
 
