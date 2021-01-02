@@ -6,6 +6,17 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    '''
+    Function reads the song data file to get a record data for songs and artists and populate to songs and artists tables
+    
+    INPUT:
+    cur - cursor object for DB
+    filepath - path to song data file    
+    
+    OUTPUT:
+    None
+    
+    '''
     # open song file
     df = pd.read_json(filepath , lines=True)
 
@@ -21,6 +32,18 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    '''
+    Function reads the log data file to get a record of data for time, users and songplays and insert data to the tables
+    
+    INPUT:
+    cur - cursor object for DB
+    filepath - path to log data file    
+    
+    OUTPUT:
+    None
+    
+    '''
+    
     # open log file
     df = pd.read_json(filepath, lines=True)
     
@@ -60,11 +83,24 @@ def process_log_file(cur, filepath):
             songid, artistid = None, None
 
         # insert songplay record
-        songplay_data = (index, pd.to_datetime(row.ts, unit='ms'), int(row.userId), row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
+        songplay_data = (pd.to_datetime(row.ts, unit='ms'), int(row.userId), row.level, songid, artistid, row.sessionId, row.location, row.userAgent)
         cur.execute(songplay_table_insert, songplay_data)
 
 
 def process_data(cur, conn, filepath, func):
+    '''
+    Function reads the song data file and log data file to get all records 
+    
+    INPUT:
+    cur - cursor object for DB
+    conn - connection string to DB
+    filepath - path to data files
+    func - function used to process data (process_song_file or process_log_file)
+    
+    OUTPUT:
+    None
+    
+    '''
     # get all files matching extension from directory
     all_files = []
     for root, dirs, files in os.walk(filepath):
@@ -84,6 +120,10 @@ def process_data(cur, conn, filepath, func):
 
 
 def main():
+    '''
+    connects to the database and run the functions to Extract, Transform and Load data to DB
+    
+    '''
     conn = psycopg2.connect("host=127.0.0.1 dbname=sparkifydb user=student password=student")
     cur = conn.cursor()
 
