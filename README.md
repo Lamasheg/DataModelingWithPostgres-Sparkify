@@ -6,7 +6,8 @@
 2. [File Structure](#Files)
 3. [Data Schema](#schema)
 4. [Results of Optional Queriess](#results)
-5. [Acknowledgements](#licensing)
+5. [Instructions to run the files](#inst)
+6. [Acknowledgements](#licensing)
 
 
     
@@ -41,6 +42,11 @@ following is a diagram that dipicts fact and dimension tables to represent a sta
 4. SPARKIFY has 96 users in DB although of a relatively low number of songs/artists
 5. Most of SPARKIFY users are free users, where 78 are FREE and only 18 are PAID
 
+## Instructions to run the files<a name="inst"></a>
+
+1. run create_tables.py on terminal to create db and tables
+2. run etl.py on terminal to extract, transforma and load data to our database
+3. run test.ipynb to test/explore tables and review optional queries and results above
 
 ## Acknowledgements<a name="licensing"></a>
 Credits go to udacity for providing the opportunity to practice our skills!
